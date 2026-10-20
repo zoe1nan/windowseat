@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  syntax-and-privacy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Syntax check (zero-dependency project)
+        run: |
+          set -e
+          for f in index.js lib/*.js extension/*.js scripts/*.mjs; do
+            node --check "$f"
+          done
+
+      - name: Privacy guard (no personal paths in tracked files)
+        run: node scripts/check-privacy.mjs
+
+      - name: Manifest sanity
+        run: |
+          node -e "const m=require('./extension/manifest.json'); if(m.manifest_version!==3) process.exit(1); if(!m.side_panel) process.exit(1); console.log('manifest ok', m.version)"

@@ -1,0 +1,5 @@
+# 临窗 Windowseat bridge 的 profile 补丁层。
+# 作用：把一个插件实例插入 composition（与 dsh-cockpit / dsh-hud 同模式）。
+- insert:
+    - id: windowseat-bridge
+      name: windowseat-bridge

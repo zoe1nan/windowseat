@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "临窗 Windowseat",
+  "short_name": "临窗",
+  "version": "0.6.0",
+  "description": "临窗 · 把当前网页交给本机 DeepSeek Harness 的侧边栏助手。扩展只连本机 loopback，模型由本机 DSH 提供。",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "打开临窗侧边栏 (Alt+Shift+P)",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "sidePanel",
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1/*",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "open-windowseat": {
+      "suggested_key": {
+        "default": "Alt+Shift+P"
+      },
+      "description": "打开临窗侧边栏"
+    }
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxR/zYfO3laD7X6vdnT723ViydTiM+tZnMHN8CSg/4ZpA4M922Vf9STjuBRujp4PPVNEeEUi5RZ+TSQ5mr3XwcN322xKZ7Rj0tqzH41sVOH0NFn7LTUQ1o3mCEP7X3YPaB2PRwEc6ELSUE2BgkySmCDKRhRgfaQ6E5D5T2hYxHbhvMl6pY3esKSjJPNUOVALl3VVyAnljD8A98N9ZhYrAVs6KW6NwFEorARsHVFJolXEXCD0C00TGCnc6n15J2bq22XVWdaDVTm9x/mWHPiOhamUyMQPHLIiQb7JKDxlREFIQJDSqzZKomaSlUWpFI6EN4X2dxtl3OcsK7ORf4O4ykQIDAQAB"
+}

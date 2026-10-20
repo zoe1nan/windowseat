@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>临窗 Windowseat</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <div class="app" id="app">
+    <!-- 图标 sprite：1.6px 线性图标，统一 currentColor -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5.5v13M5.5 12h13" /></symbol>
+      <symbol id="i-history" viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.5V9H9" /><path d="M12 8.2v4.3l3 1.8" /></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.3" /><path d="m15.5 15.5 4 4" /></symbol>
+      <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4.5 19.5h4L19 9a2.1 2.1 0 0 0-3-3L5.5 16.5v3Z" /><path d="m14.8 7.2 3 3" /></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4.5 7h15M9 7V5.2c0-.9.7-1.7 1.7-1.7h2.6c1 0 1.7.8 1.7 1.7V7" /><path d="m6.5 7 .9 12a1.8 1.8 0 0 0 1.8 1.7h5.6a1.8 1.8 0 0 0 1.8-1.7l.9-12" /></symbol>
+      <symbol id="i-send" viewBox="0 0 24 24"><path d="M20.5 3.5 10.2 13.8M20.5 3.5 14 20.5l-3.8-6.7-6.7-3.8L20.5 3.5Z" /></symbol>
+      <symbol id="i-stop" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2" /></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2.4" /><path d="M15.5 5.5H6.4A1.9 1.9 0 0 0 4.5 7.4v9.1" /></symbol>
+      <symbol id="i-retry" viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3M19.5 4.5V9H15" /></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="m6.5 6.5 11 11M17.5 6.5l-11 11" /></symbol>
+      <symbol id="i-gear" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1" /><circle cx="15" cy="7" r="2" /><circle cx="9" cy="12" r="2" /><circle cx="17" cy="17" r="2" /></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" /><path d="M3.5 12h17M12 3.5c2.3 2.4 3.4 5.3 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.3-3.4-8.5S9.7 5.9 12 3.5Z" /></symbol>
+      <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 6.5h16M4 11.3h11.5M4 16h16M4 20.7h8" /></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9.5" rx="2.4" /><path d="M8.2 10.5V8a3.8 3.8 0 0 1 7.6 0v2.5" /></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3M19.5 4.5V9H15" /></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4.5 21 19.5H3L12 4.5Z" /><path d="M12 9.5v4.2M12 16.8v.2" /></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5.5 12.5 4.2 4.2 8.8-9.4" /></symbol>
+      <symbol id="i-page" viewBox="0 0 24 24"><path d="M6 3.5h7.5L19 9v11.5H6z" /><path d="M13.2 3.7V9H19" /></symbol>
+      <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9.5 6.5c-3 1.4-4.6 3.9-4.6 7.1 0 2.4 1.3 3.9 3.3 3.9 1.7 0 2.9-1.2 2.9-2.8 0-1.6-1.1-2.7-2.6-2.7-.3 0-.6 0-.8.1.4-1.6 1.4-2.8 2.9-3.6M19.2 6.5c-3 1.4-4.6 3.9-4.6 7.1 0 2.4 1.3 3.9 3.3 3.9 1.7 0 2.9-1.2 2.9-2.8 0-1.6-1.1-2.7-2.6-2.7-.3 0-.6 0-.8.1.4-1.6 1.4-2.8 2.9-3.6" /></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8.5h3.2l1.5-2.2h6.6l1.5 2.2H20v10.5H4z" /><circle cx="12" cy="13.4" r="3.4" /></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5v5M12 15.5v5M3.5 12h5M15.5 12h5M6.2 6.2l3 3M14.8 14.8l3 3M17.8 6.2l-3 3M9.2 14.8l-3 3" /></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.4" r="3.1" /><path d="M3.4 19c.5-3.3 2.8-5 5.6-5s5.1 1.7 5.6 5" /><circle cx="17" cy="9.2" r="2.4" /><path d="M15.6 14.6c2.4-.3 4.4 1.2 4.9 4.4" /></symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5" /></symbol>
+    </svg>
+
+    <!-- 顶栏 -->
+    <header class="hd">
+      <span class="hd-halo" aria-hidden="true"></span>
+      <img class="brand-mark" src="assets/brand-mark.svg" alt="" width="21" height="21" />
+      <div class="brand-text">
+        <span class="brand-name">临窗 Windowseat</span>
+      </div>
+      <div class="hd-right">
+        <span class="status" id="status" title="本机 DSH 连接状态">
+          <i class="dot" id="statusDot"></i>
+          <span id="statusText">连接中…</span>
+        </span>
+        <button class="icon-btn" id="histBtn" type="button" title="历史会话" aria-label="历史会话" aria-haspopup="dialog">
+          <svg class="ic"><use href="#i-history" /></svg>
+        </button>
+        <button class="icon-btn" id="setBtn" type="button" title="设置" aria-label="设置" aria-haspopup="dialog">
+          <svg class="ic"><use href="#i-gear" /></svg>
+        </button>
+        <button class="icon-btn" id="newBtn" type="button" title="新会话" aria-label="新会话">
+          <svg class="ic"><use href="#i-plus" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- 上下文 chips -->
+    <div class="ctx-row" id="ctxRow" hidden></div>
+
+    <!-- 断连 / 重连提示条：只在消息流有内容时出现 -->
+    <div class="conn-banner" id="connBanner" hidden role="status" aria-live="polite">
+      <svg class="ic conn-ic"><use href="#i-alert" /></svg>
+      <span class="conn-text" id="connText">本地 DSH 桥未连接 · 正在重试…</span>
+      <button class="mini-btn" id="connRetry" type="button">立即重试</button>
+    </div>
+
+    <!-- 恢复上次会话提示 -->
+    <div class="restore" id="restoreBar" hidden>
+      <svg class="ic restore-ic"><use href="#i-retry" /></svg>
+      <span class="restore-text" id="restoreText">已恢复上次会话</span>
+      <span class="restore-spacer"></span>
+      <button class="mini-btn" id="restoreContinue" type="button">继续</button>
+      <button class="mini-btn ghost" id="restoreClear" type="button">清空</button>
+    </div>
+
+    <!-- 消息流 / 空状态 -->
+    <main class="scroll" id="scroll">
+      <div class="thread" id="thread" hidden></div>
+      <div class="empty" id="empty"></div>
+    </main>
+
+    <!-- 协同小队（只读投影：成员 + 共享任务板） -->
+    <div class="team-dock" id="teamDock" hidden>
+      <button class="team-toggle" id="teamToggle" type="button" aria-expanded="false" title="协同小队（来自 DSH Agent Team）">
+        <svg class="ic"><use href="#i-users" /></svg>
+        <span class="team-title">协同小队</span>
+        <span class="team-sum" id="teamSum"></span>
+        <svg class="ic team-chev" id="teamChev"><use href="#i-chev" /></svg>
+      </button>
+      <div class="team-body" id="teamBody" hidden></div>
+    </div>
+
+    <!-- 输入区 -->
+    <div class="composer" id="composer">
+      <div class="comp-box" id="compBox">
+        <div class="shots" id="shots" hidden></div>
+        <textarea
+          class="comp-input"
+          id="input"
+          rows="1"
+          placeholder="问点什么，或选中网页文字后点「解释 / 翻译 / 总结」…"
+          aria-label="输入问题"
+        ></textarea>
+        <div class="comp-bar">
+          <div class="comp-tools">
+            <button class="tool-btn" id="shotBtn" type="button" title="截取当前页面并提问（可读图）">
+              <svg class="ic"><use href="#i-camera" /></svg>
+              <span>截图</span>
+            </button>
+          </div>
+          <span class="hint"><span class="kbd">Enter</span> 发送<span class="hint-sep">·</span><span class="kbd">Shift</span>+<span class="kbd">Enter</span> 换行</span>
+          <button class="send" id="sendBtn" type="button" title="发送（Enter）" aria-label="发送">
+            <svg class="ic"><use href="#i-send" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底栏 -->
+    <footer class="pfoot">
+      <svg class="ic pfoot-lock"><use href="#i-lock" /></svg>
+      <span>本地 loopback</span>
+      <span class="sep">·</span>
+      <span>本地桥接</span>
+      <span class="sep">·</span>
+      <span class="pw">Powered by <b>DeepSeek Harness</b></span>
+    </footer>
+
+    <!-- 历史会话抽屉（覆盖在面板上方，不改变主布局） -->
+    <div class="hist-mask" id="histMask" hidden></div>
+    <aside class="hist-drawer" id="histDrawer" hidden role="dialog" aria-label="历史会话">
+      <div class="hist-head">
+        <b class="hist-title">历史会话</b>
+        <span class="hist-count" id="histCount"></span>
+        <button class="icon-btn" id="histClose" type="button" title="关闭历史" aria-label="关闭历史">
+          <svg class="ic"><use href="#i-x" /></svg>
+        </button>
+      </div>
+      <div class="hist-search">
+        <svg class="ic hist-search-ic"><use href="#i-search" /></svg>
+        <input id="histSearch" type="search" placeholder="搜索会话标题" autocomplete="off" spellcheck="false" aria-label="搜索历史会话" />
+      </div>
+      <div class="hist-list" id="histList" role="list"></div>
+      <div class="hist-empty" id="histEmpty" hidden></div>
+      <div class="hist-foot" id="histFoot" hidden>加载更早…</div>
+    </aside>
+
+    <!-- 设置抽屉 -->
+    <div class="set-mask" id="setMask" hidden></div>
+    <aside class="set-drawer" id="setDrawer" hidden role="dialog" aria-label="设置">
+      <div class="hist-head">
+        <b class="hist-title">设置</b>
+        <button class="icon-btn" id="setClose" type="button" title="关闭设置" aria-label="关闭设置">
+          <svg class="ic"><use href="#i-x" /></svg>
+        </button>
+      </div>
+      <div class="set-body">
+        <section class="set-sec">
+          <div class="set-label">思考强度<span class="set-hint">越高越慢、越深</span></div>
+          <div class="set-efforts" id="setEfforts" role="group" aria-label="思考强度">
+            <button type="button" data-effort="off">关</button>
+            <button type="button" data-effort="low">快</button>
+            <button type="button" data-effort="high">深</button>
+            <button type="button" data-effort="max">极深</button>
+          </div>
+          <div class="set-note" id="setEffortNote">读取中…</div>
+        </section>
+        <section class="set-sec">
+          <div class="set-label">本地文件白名单</div>
+          <div class="set-dirs" id="setDirs"></div>
+          <div class="set-add">
+            <input id="setDirInput" type="text" placeholder="添加目录，如 D:\资料" autocomplete="off" spellcheck="false" aria-label="添加本地目录" />
+            <button id="setDirAdd" class="set-add-btn" type="button">添加</button>
+          </div>
+          <div class="set-note">只读引用，不加入白名单的目录不会被索引。</div>
+        </section>
+        <section class="set-sec">
+          <div class="set-label">快捷键与版本</div>
+          <div class="set-kv"><span>打开 / 收起侧边栏</span><span><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd></span></div>
+          <div class="set-kv"><span>扩展版本</span><span id="setVersion">—</span></div>
+          <div class="set-note">快捷键由浏览器分配；如无效可在 edge://extensions/shortcuts 手动绑定。</div>
+        </section>
+      </div>
+    </aside>
+  </div>
+
+  <script src="sidepanel.js"></script>
+  <script src="files.js"></script>
+</body>
+</html>

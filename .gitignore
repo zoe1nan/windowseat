@@ -1,0 +1,14 @@
+node_modules/
+.DS_Store
+*.log
+
+# 本地数据 / 运行产物
+.dsh/
+profiles/
+*.log
+tmp/
+dist/
+release/
+node_modules/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,15 @@
+# NOTICE
+
+## 商标与品牌素材
+
+`extension/assets/` 中的 DeepSeek 鲸鱼标志（`brand-mark.svg`）与 DeepSeek 文字标志（`brand-wordmark*.svg`）版权归 **DeepSeek** 所有，来自 DeepSeek Harness 公开客户端资源。
+
+本项目为**非官方社区扩展**，使用上述素材仅用于说明「与本机 DeepSeek Harness 配合使用」，不代表 DeepSeek 官方认可或背书。除上述品牌素材外，本仓库代码与文档以 [MIT](LICENSE) 许可发布。
+
+## 第三方依赖
+
+本项目运行时**零第三方依赖**：bridge 仅使用 Node.js 内置模块，扩展为原生 JavaScript（无构建、无 CDN、无远程代码）。
+
+## 名称
+
+「临窗 / Windowseat」为本项目产品名；「DeepSeek」「DeepSeek Harness」为其权利人的商标。

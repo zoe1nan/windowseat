@@ -1,0 +1,19 @@
+{
+  "name": "windowseat-bridge",
+  "version": "0.6.0",
+  "private": true,
+  "type": "module",
+  "description": "临窗 Windowseat bridge — local DSH host plugin exposing a loopback HTTP/SSE endpoint for the Edge side panel.",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+/* 临窗 Windowseat · content script 注入样式
+ * 仅用于隔离浮条宿主元素，避免被页面样式影响；浮条内部样式全部在 Shadow DOM 中。
+ */
+
+#windowseat-sel-host {
+  all: initial !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  pointer-events: none !important;
+  z-index: 2147483647 !important;
+  display: block !important;
+  contain: layout style !important;
+}
